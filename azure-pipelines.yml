@@ -42,7 +42,6 @@ steps:
 
 - task: NuGetCommand@2
   displayName: 'Pushing NuGet package'
-  condition: and(succeeded(), not(eq(variables['Build.Reason'], 'PullRequest')))
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.snupkg'
