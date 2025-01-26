@@ -43,6 +43,7 @@ steps:
   displayName: 'Pushing NuGet package'
   inputs:
     command: 'push'
+    allowPackageConflicts: true
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;$(Build.SourcesDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.snupkg;!$(Build.SourcesDirectory)/**/*.snupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'AzureNuget'
