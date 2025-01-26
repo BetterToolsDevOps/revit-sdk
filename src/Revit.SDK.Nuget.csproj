@@ -9,10 +9,10 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackageId>Autodesk.Revit.SDK</PackageId>
+		<PackageId>BetterTools.Revit.SDK</PackageId>
 		<Version>$(Version)</Version>
-		<Authors>Zhmayev Yaroslav</Authors>
-		<Company>CodeCave LLC</Company>
+		<Authors>Sameer Omar</Authors>
+		<Company>Better Tools</Company>
 		<PackageTags>revit, sdk, api, sdk, autodesk, revitapi, revitsdk, C#, addin, plugin, command, external application, applicaion, $(RevitVersion), revit$(RevitVersion)</PackageTags>
 		<Description>The Software Development Toolkit (SDK) provides extensive .NET code samples and documentation to help you get started developing with the Revit API.</Description>
 		<Copyright>© Autodesk Inc. All rights reserved</Copyright>
