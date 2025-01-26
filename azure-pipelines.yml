@@ -16,14 +16,14 @@ pr:
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Install .NET Core 6.0.x SDK'
+  displayName: 'Install .NET Core 8.0.x SDK'
   inputs:
     packageType: sdk
-    version: '6.0.x'
+    version: '8.0.x'
 
 - task: NuGetToolInstaller@1
   inputs:
-    versionSpec: '6.4.0'
+    versionSpec: '6.12.2'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -32,7 +32,6 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'Creating NuGet package (with debug symbols)'
-  condition: and(succeeded(), not(eq(variables['Build.Reason'], 'PullRequest')))
   inputs:
     command: 'custom'
     projects: '**/Revit.SDK.20*.csproj'
@@ -42,10 +41,10 @@ steps:
 
 - task: NuGetCommand@2
   displayName: 'Pushing NuGet package'
-  condition: and(succeeded(), not(eq(variables['Build.Reason'], 'PullRequest')))
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.snupkg'
+    allowPackageConflicts: true
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;$(Build.SourcesDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.snupkg;!$(Build.SourcesDirectory)/**/*.snupkg'
     nuGetFeedType: 'external'
-    publishFeedCredentials: 'NuGet'
+    publishFeedCredentials: 'AzureNuget'
 
