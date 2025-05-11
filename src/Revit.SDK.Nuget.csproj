@@ -17,7 +17,7 @@
 		<Description>The Software Development Toolkit (SDK) provides extensive .NET code samples and documentation to help you get started developing with the Revit API.</Description>
 		<Copyright>© Autodesk Inc. All rights reserved</Copyright>
 		<PackageProjectUrl>https://www.autodesk.com/developer-network/platform-technologies/revit</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/CodeCavePro/RevitSDK</RepositoryUrl>
+		<RepositoryUrl>https://github.com/BetterToolsDevOps/revit-sdk</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
 		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
@@ -41,6 +41,7 @@
 
 	<ItemGroup>
 		<Content Include="../lib/$(RevitVersion)/*" Pack="true" PackagePath="ref/$(TargetPath)" />
+		<Content Remove="..\lib\UpdateLib.bat" />
 		<Content Include="../assets/LICENSE.txt" Pack="true" PackagePath="" />
 	</ItemGroup>
 
@@ -49,6 +50,10 @@
 		<Content Include="../assets/Revit-2015.png" Pack="true" PackagePath="Revit.png" Condition="'$(RevitVersion)' == '2015'" />
 		<Content Include="../assets/Revit-2017.png" Pack="true" PackagePath="Revit.png" Condition="'$(RevitVersion)' != '2014' And '$(RevitVersion)' != '2015' And '$(RevitVersion)' != '2023'" />
 		<Content Include="../assets/Revit-2023.png" Pack="true" PackagePath="Revit.png" Condition="'$(RevitVersion)' == '2023'" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\lib\UpdateLib.bat" />
 	</ItemGroup>
 
 	<!--
